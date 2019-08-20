@@ -16,11 +16,17 @@
 
   <meta name="theme-color" content="#fafafa">
   <style>
+
+    @import 'https://fonts.googleapis.com/css?family=Roboto';
+    @font-face {
+      font-family: Gilroy Light;
+      src: url('./Gilroy-Light.otf');
+    }
     html, body {
       width: 100%;
       height: 100%;
 
-      font-family: Calibri;
+      font-family: Gilroy Light, Avenir Next, Calibri;
     }
 
     .page {
@@ -51,17 +57,52 @@
       min-height: 85vh;
     }
     .logo-image {
-      width: 55vw;
+      width: 45vw;
     }
     .logo-text {
       /*text-align: center;*/
       /*font-size: 40px;*/
 
+      font-family: Gilroy Light, Avenir Next, Calibri;
+      color: #2c2c2c;
       text-align: center;
-      font-size: 8vh;
+      font-size: 10vh;
       margin-top: 7vh
 
     }
+
+
+    /*html, body {*/
+    /*  background-color: #000;*/
+    /*}*/
+    .description {
+      color: #fff;
+      font-family: Roboto;
+      text-decoration: none;
+      color: black;
+    }
+
+    .blink {
+      animation: blink 0.5s infinite;
+    }
+    @keyframes blink{
+      to { opacity: .0; }
+    }
+    .description-container {
+      display: flex;
+    }
+    .description {
+      color: black;
+      font-family: "Courier";
+      font-size: 20px;
+      padding: 0.1em;
+
+      text-align: center;
+    }
+
+
+
+
 
     .footer {
       background-color: rgb(253, 78, 73);
@@ -82,6 +123,7 @@
       position: sticky;
       margin-top: 102px;
       bottom: 0;
+      border-radius: 4px;
 
     }
     .podcast-episode {
@@ -96,6 +138,15 @@
       max-height: 92%;
       width: 100%;
     }
+    .link {
+      font-family: "Courier";
+      text-underline: black;
+    }
+    .link:hover {
+      cursor: pointer;
+      text-decoration: underline;
+
+    }
   </style>
 </head>
 
@@ -105,13 +156,14 @@
     <div class="logo">
       <img class="logo-image" src="./EdTechAmericaLogoIcon.png"/>
       <div class="logo-text">Ed Tech America</div>
-      <div class="cool-description">
-        Typing Text . . .
+
+      <div class="description-container">
+        <p class="description" id="description"></p><p class="description blink">|</p>
       </div>
       <div class="cta">
-        <div class="cta-googleplay">Listen on Google Play</div>
-        <div class="cta-apple">Listen on Apple Podcasts</div>
-        <div class="cta-spotify">Listen on Spotify</div>
+        <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>
+        <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>
+        <div class="cta-spotify">Listen on <a class="link">Spotify</a></div>
       </div>
     </div>
     <div class="footer"></div>
@@ -134,6 +186,55 @@
   <!-- Add your site or application content here -->
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    const words = ["Accelerate your learning.", "Accelerate your teaching.", "Accelerate America's Education."];
+    let i = 0;
+    let timer;
+
+    function typingEffect() {
+      let word = words[i].split("");
+      var loopTyping = function() {
+        if (word.length > 0) {
+          document.getElementById('description').innerHTML += word.shift();
+        } else {
+
+            startDeletingEffect();
+            return false;
+
+
+        };
+        timer = setTimeout(loopTyping, 50);
+      };
+      loopTyping();
+    };
+
+    function startDeletingEffect() {
+      setTimeout(deletingEffect, 2000)
+
+    }
+
+    function deletingEffect() {
+      let word = words[i].split("");
+      var loopDeleting = function() {
+        if (word.length > 0) {
+          word.pop();
+          document.getElementById('description').innerHTML = word.join("");
+        } else {
+          if (words.length > (i + 1)) {
+            i++;
+          } else {
+            i = 0;
+          };
+          typingEffect();
+          return false;
+        };
+        timer = setTimeout(loopDeleting, 50);
+      };
+      loopDeleting();
+    };
+
+    typingEffect();
+  </script>
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
