@@ -7,12 +7,12 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+<!--  <link rel="manifest" href="site.webmanifest">-->
+<!--  <link rel="apple-touch-icon" href="icon.png">-->
+<!--  &lt;!&ndash; Place favicon.ico in the root directory &ndash;&gt;-->
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+<!--  <link rel="stylesheet" href="css/normalize.css">-->
+<!--  <link rel="stylesheet" href="css/main.css">-->
 
   <meta name="theme-color" content="#fafafa">
   <style>
@@ -127,6 +127,7 @@
 
     }
     .podcast-episode {
+      height: 102px;
       width: 100%;
       position: sticky;
       margin-top: 2px;
@@ -163,19 +164,23 @@
       <div class="cta">
         <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>
         <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>
-        <div class="cta-spotify">Listen on <a class="link">Spotify</a></div>
+        <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Spotify</a></div>
       </div>
     </div>
     <div class="footer"></div>
+    <div class="podcast">
+     <iframe src="https://anchor.fm/podcast-d76e708/embed" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+    </div>
     <div class="listen-now">
       <div class="episode">
 
       </div>
-      <div class="cta-apple">Listen on Apple Podcasts</div>
-      <div class="cta-spotify">Listen on Spotify</div>
+    </div>
+    <div id="result">
+
     </div>
     <div class="podcast-episode-container">
-      <iframe class="podcast-episode" src="https://anchor.fm/podcast-d76e708/embed/episodes/Ed-Tech-America-Ep--1---Camilla-from-Lix-Technologies-e4vr9e" height="102px" width="400px" frameborder="0" scrolling="no"></iframe>
+      <iframe class="podcast-episode" src="https://anchor.fm/podcast-d76e708/embed/episodes/Ed-Tech-America-Ep--1---Camilla-from-Lix-Technologies-e4vr9e" frameborder="0" scrolling="no"></iframe>
     </div>
 
   </div>
@@ -187,7 +192,13 @@
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
-    const words = ["Accelerate your learning.", "Accelerate your teaching.", "Accelerate America's Education."];
+		/**
+     * TODO:
+     * Change highlight color on text. i think one of the font creator apps that I bookmarked to Pretty Designs has a good example
+     *
+     * Display an alert if the iframes didn't load the podcast (i.e. because of an adblocker) - https://stackoverflow.com/a/46001569/2453293
+		 */
+		const words = ["Accelerate your learning.", "Accelerate your teaching.", "Accelerate America's Education."];
     let i = 0;
     let timer;
 
@@ -235,6 +246,44 @@
 
     typingEffect();
   </script>
+ <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+
+  $(document).ready(function() {
+
+    $.ajax({
+
+        method: 'GET',
+
+        url: '//google.com',
+
+        dataType: 'text',
+
+        success: function(data) {
+
+        var iframe = document.getElementById('result');
+
+        iframe = iframe.contentWindow || ( iframe.contentDocument.document || iframe.contentDocument);
+
+
+
+        iframe.document.open();
+
+        iframe.document.write(data);
+
+        iframe.document.close();
+
+      }
+
+    });
+
+  });
+
+</script>
+
   <script>
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
@@ -243,13 +292,6 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
 
 
 <html>
