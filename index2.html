@@ -31,20 +31,37 @@
       bottom: 10vw;
       color: white;
     }
+    ::selection {
+      background: black;
+      filter: pixelate(100);
+      color: white;
+    }
       @media only screen and (orientation: portrait) and (max-width: 555px) {
         .html {
           width: 100%;
           height: 100%;
         }
         body {
-          flex-direction: row;
-          align-items: center;
+          /* flex-direction: row; */
+          /* align-items: center; */
           justify-content: center;
-          width: 100%;
-          height: 100%;
+          /* width: 100%; */
+          /* height: 100%; */
+          /* max-height: 100%; */
+          /* min-width: 100%; */
+          /* min-height: 100%; */
           display: flex;
           margin: 0;
         }
+        #myVideo {
+          height: 100%;
+          /* max-height: 100%; */
+          position: relative;
+          /* max-width: 100%; */
+          top: 0;
+          position: absolute;
+        }
+
       }
       @media (min-width: 556px) {
         #myVideo {
@@ -63,23 +80,24 @@
           height: 100%;
           align-items: center;
         }
-        .top-content {
-           background-color: rgba(255,255,255,.7);
-          color: black;
-          width: 620px;
-          text-align: center;
-          margin: 0;
-          padding-top: 15px;
-
-
-
-          position: absolute;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          position: relative;
-        }
        }
+
+    .top-content {
+      background-color: rgba(255,255,255,.7);
+      color: black;
+      width: 620px;
+      text-align: center;
+      margin: 0;
+      padding-top: 15px;
+
+
+
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
 
 
     /*.top-content {*/
@@ -213,38 +231,51 @@
 /*  background: #ddd;*/
 /*  color: black;*/
 /*}*/
+
+    .episode-container {
+      height: 10vh;
+      background-color: rgba(255,255,255, .7);
+      position: absolute;
+      bottom: 0;
+    }
   </style>
 </head>
 <body>
   <!-- The video -->
-  <video autoplay muted loop id="myVideo">
-    <source id="myVideoSrc" src="./EdTechAmericaHeroVideo_Mobile_cropping_v3.mp4" type="video/mp4">
+  <video autoplay muted loop id="myVideo" data-change="cshatsh">
+    <source id="myVideoSrc" src="./EdTechAmericaHeroLandingCropv7.mp4" type="video/mp4">
   </video>
 
-  <div class="top-content">
-<!--    <img class="logo-image" src="./EdTechAmericaLogoIcon.png"/>-->
-    <div class="logo-text">Ed Tech America</div>
+<!--  <div class="top-content">-->
+<!--&lt;!&ndash;    <img class="logo-image" src="./EdTechAmericaLogoIcon.png"/>&ndash;&gt;-->
+<!--    <div class="logo-text">Ed Tech America</div>-->
 
-    <div class="description-container">
-      <div class="description-animation-container">
-        <p class="description-animation" id="description"></p><p id="descriptionBlink" class="description-animation blink">|</p>
-      </div>
-      <p class="description-details">Join John and Alex from Ed Tech Shop in interviewing education experts and ed tech CEOs to gain insight on how to solve the education crisis in America.</p>
-    </div>
-<!--    <div class="cta">-->
-<!--      &lt;!&ndash;        <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>&ndash;&gt;-->
-<!--      &lt;!&ndash;        <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>&ndash;&gt;-->
-<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Spotify</a></div>-->
-<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Apple Podcasts</a></div>-->
-<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Google Podcastsh</a></div>-->
+<!--    <div class="description-container">-->
+<!--      <div class="description-animation-container">-->
+<!--        <p class="description-animation" id="description"></p><p id="descriptionBlink" class="description-animation blink">|</p>-->
+<!--      </div>-->
+<!--      <p class="description-details">Join John and Alex from Ed Tech Shop in interviewing education experts and ed tech CEOs to gain insight on how to solve the education crisis in America.</p>-->
 <!--    </div>-->
-  </div>
+<!--&lt;!&ndash;    <div class="cta">&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash;        <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      &lt;!&ndash;        <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Spotify</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Apple Podcasts</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Google Podcastsh</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--  </div>-->
+<!--  <div class="episode-container">-->
+<!--    <div class="episode-container-current-episode">-->
+<!--      Episode player will go here-->
+<!--    </div>-->
+<!--  </div>-->
   <script>
     console.log('screen width & height are ', window.screen.width, window.screen.height)
     const aspectRatio = window.screen.width / window.screen.height
     if (aspectRatio < 1) {
     	console.log("vertical view detected")
-			document.querySelector('#myVideoSrc').src = 'EdTechAmericaHeroVideo_Mobile_cropping_v3.mp4'
+			document.querySelector('#myVideoSrc').src = './EdTechAmericaHeroLandingCropv7.mp4'
 			// document.querySelector('#myVideoSrc').src = './EdTechAmericaLanding_v2.mp4'
     } else {
 			document.querySelector('#myVideoSrc').src = './EdTechAmericaLanding_v2.mp4'
