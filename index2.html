@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" type="text/css" href="./green-audio-player.css">
 <!--  <link rel="manifest" href="site.webmanifest">-->
 <!--  <link rel="apple-touch-icon" href="icon.png">-->
 <!--  &lt;!&ndash; Place favicon.ico in the root directory &ndash;&gt;-->
@@ -45,6 +46,9 @@
           top: 0;
           position: absolute;
         }
+        .episode-container {
+          min-width: 100%;
+        }
 
       }
       @media (min-width: 556px) {
@@ -55,8 +59,17 @@
           min-width: 100%;
           min-height: 100%;
         }
+        .episode-container {
+          max-width: 70vw;
+          width: 70vw;
+        }
        }
 
+    .episode-container {
+      background-color: rgba(255,255,255, .7);
+      position: absolute;
+      bottom: 0;
+    }
     html, body {
       height: 100%;
     }
@@ -216,12 +229,6 @@
 /*  color: black;*/
 /*}*/
 
-    .episode-container {
-      height: 10vh;
-      background-color: rgba(255,255,255, .7);
-      position: absolute;
-      bottom: 0;
-    }
   </style>
 </head>
 <body>
@@ -252,7 +259,11 @@
   </div>
   <div class="episode-container">
     <div class="episode-container-current-episode">
-      Episode player will go here
+      <div class="ready-player-1 player">
+        <audio crossorigin>
+          <source src="./example-1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
     </div>
   </div>
   <script>
@@ -297,6 +308,16 @@
     }
   </script>
 
+  <script src="./green-audio-player.js"></script>
+
+  <script>
+		document.addEventListener('DOMContentLoaded', function() {
+			GreenAudioPlayer.init({
+				selector: '.player',
+				stopOthersOnPlay: true
+			});
+		});
+  </script>
   <script>
 		/**
 		 * TODO:
