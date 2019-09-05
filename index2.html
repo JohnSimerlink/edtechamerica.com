@@ -37,22 +37,6 @@
       color: white;
     }
       @media only screen and (orientation: portrait) and (max-width: 555px) {
-        .html {
-          width: 100%;
-          height: 100%;
-        }
-        body {
-          /* flex-direction: row; */
-          /* align-items: center; */
-          justify-content: center;
-          /* width: 100%; */
-          /* height: 100%; */
-          /* max-height: 100%; */
-          /* min-width: 100%; */
-          /* min-height: 100%; */
-          display: flex;
-          margin: 0;
-        }
         #myVideo {
           height: 100%;
           /* max-height: 100%; */
@@ -71,17 +55,17 @@
           min-width: 100%;
           min-height: 100%;
         }
-        html, body {
-          height: 100%;
-        }
-        body {
-          display: flex;
-          justify-content: center;
-          height: 100%;
-          align-items: center;
-        }
        }
 
+    html, body {
+      height: 100%;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
     .top-content {
       background-color: rgba(255,255,255,.7);
       color: black;
@@ -242,43 +226,74 @@
 </head>
 <body>
   <!-- The video -->
-  <video autoplay muted loop id="myVideo" data-change="cshatsh">
-    <source id="myVideoSrc" src="./EdTechAmericaHeroLandingCropv7.mp4" type="video/mp4">
+  <video muted loop id="myVideo" data-change="cshatsh">
+<!--    <source id="desktopVid" type="video/mp4">-->
+<!--    <source id="mobileVid" type="video/mp4">-->
   </video>
 
-<!--  <div class="top-content">-->
-<!--&lt;!&ndash;    <img class="logo-image" src="./EdTechAmericaLogoIcon.png"/>&ndash;&gt;-->
-<!--    <div class="logo-text">Ed Tech America</div>-->
+  <div class="top-content">
+<!--    <img class="logo-image" src="./EdTechAmericaLogoIcon.png"/>-->
+    <div class="logo-text">Ed Tech America</div>
 
-<!--    <div class="description-container">-->
-<!--      <div class="description-animation-container">-->
-<!--        <p class="description-animation" id="description"></p><p id="descriptionBlink" class="description-animation blink">|</p>-->
-<!--      </div>-->
-<!--      <p class="description-details">Join John and Alex from Ed Tech Shop in interviewing education experts and ed tech CEOs to gain insight on how to solve the education crisis in America.</p>-->
+    <div class="description-container">
+      <div class="description-animation-container">
+        <p class="description-animation" id="description"></p><p id="descriptionBlink" class="description-animation blink">|</p>
+      </div>
+      <p class="description-details">Join John and Alex from Ed Tech Shop in interviewing education experts and ed tech CEOs to gain insight on how to solve the education crisis in America.</p>
+    </div>
+<!--    <div class="cta">-->
+<!--      &lt;!&ndash;        <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>&ndash;&gt;-->
+<!--      &lt;!&ndash;        <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>&ndash;&gt;-->
+<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Spotify</a></div>-->
+<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Apple Podcasts</a></div>-->
+<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Google Podcastsh</a></div>-->
 <!--    </div>-->
-<!--&lt;!&ndash;    <div class="cta">&ndash;&gt;-->
-<!--&lt;!&ndash;      &lt;!&ndash;        <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;      &lt;!&ndash;        <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Spotify</a></div>&ndash;&gt;-->
-<!--&lt;!&ndash;      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Apple Podcasts</a></div>&ndash;&gt;-->
-<!--&lt;!&ndash;      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Google Podcastsh</a></div>&ndash;&gt;-->
-<!--&lt;!&ndash;    </div>&ndash;&gt;-->
 
-<!--  </div>-->
-<!--  <div class="episode-container">-->
-<!--    <div class="episode-container-current-episode">-->
-<!--      Episode player will go here-->
-<!--    </div>-->
-<!--  </div>-->
+  </div>
+  <div class="episode-container">
+    <div class="episode-container-current-episode">
+      Episode player will go here
+    </div>
+  </div>
   <script>
-    console.log('screen width & height are ', window.screen.width, window.screen.height)
-    const aspectRatio = window.screen.width / window.screen.height
-    if (aspectRatio < 1) {
-    	console.log("vertical view detected")
-			document.querySelector('#myVideoSrc').src = './EdTechAmericaHeroLandingCropv7.mp4'
-			// document.querySelector('#myVideoSrc').src = './EdTechAmericaLanding_v2.mp4'
-    } else {
-			document.querySelector('#myVideoSrc').src = './EdTechAmericaLanding_v2.mp4'
+    // var player = document.getElementById('myVideo');
+    //
+    //   var mp4Vid = document.getElementById('mp4Source');
+    //
+    //   player.pause();
+    //
+    //   // Now simply set the 'src' property of the mp4Vid variable!!!!
+    //
+    //   mp4Vid.src = "/pathTo/newVideo.mp4";
+    //
+    //   player.load();
+    //   player.play();
+		let isVertical
+		const videoSource = document.querySelector('#myVideoSrc')
+		const video = document.querySelector('video')
+    setTimeout(() => {
+    	setVideoBasedOnScreenSize()
+		}, 0)
+    window.addEventListener('resize', setVideoBasedOnScreenSize)
+    function setVideoBasedOnScreenSize() {
+    	console.log("resize detected")
+			console.log('screen width & height are ', window.screen.width, window.screen.height)
+			const aspectRatio = window.screen.width / window.screen.height
+			if (aspectRatio < 1) {
+				if (isVertical === true) { return }
+				isVertical = true
+				console.log("vertical view detected")
+				// videoSource.src = './EdTechAmericaHeroLandingCropv7.mp4'
+        video.src = './EdTechAmericaHeroLandingCropv7.mp4'
+				// document.querySelector('#myVideoSrc').src = './EdTechAmericaLanding_v2.mp4'
+			} else {
+				console.log('horizontal detected', isVertical)
+				if (isVertical === false) { return }
+				isVertical = false
+				video.src = './EdTechAmericaLanding_v2.mp4'
+				// videoSource.src = './EdTechAmericaLanding_v2.mp4'
+			}
+			video.play()
     }
   </script>
 
