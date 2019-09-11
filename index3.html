@@ -1,0 +1,278 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--  <link rel="manifest" href="site.webmanifest">-->
+<!--  <link rel="apple-touch-icon" href="icon.png">-->
+<!--  &lt;!&ndash; Place favicon.ico in the root directory &ndash;&gt;-->
+
+<!--  <link rel="stylesheet" href="css/normalize.css">-->
+<!--  <link rel="stylesheet" href="css/main.css">-->
+
+  <meta name="theme-color" content="#fafafa">
+  <style>
+
+    @import 'https://fonts.googleapis.com/css?family=Roboto';
+    @font-face {
+      font-family: Gilroy Light;
+      src: url('./Gilroy-Light.otf');
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+
+      font-family: Gilroy Light, Avenir Next, Calibri;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100%;
+      background-color: #EBEBEB;
+      align-items: center;
+      margin: 0;
+    }
+    .header {
+      background: rgb(244, 246, 248);
+      min-height: 8vh;
+      width: 100%;
+    }
+
+    .top-content {
+      /*margin-top: 20vh;*/
+      /*margin-bottom: 30vh;*/
+      /*display: flex;*/
+      /*flex-direction: column;*/
+      /*align-items: center;*/
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /*min-height: 85vh;*/
+      min-height: calc(92vh - 102px - 20px);
+      max-height: calc(92vh - 102px - 20px);
+
+      position: relative;
+    }
+    @media (min-width: 768px) {
+      .logo-image {
+        width: 35vw;
+      }
+    }
+    @media (max-width: 767px) {
+      .logo-image {
+        width: 45vw;
+      }
+    }
+    .logo-text {
+      /*text-align: center;*/
+      /*font-size: 40px;*/
+
+      font-family: Gilroy Light, Avenir Next, Calibri;
+      color: #2c2c2c;
+      text-align: center;
+      font-size: 10vh;
+      margin-top: 7vh
+
+    }
+
+
+    /*html, body {*/
+    /*  background-color: #000;*/
+    /*}*/
+    .description-animation {
+      color: #fff;
+      font-family: Roboto;
+      text-decoration: none;
+      color: black;
+    }
+
+    .blink {
+      animation: blink 0.5s infinite;
+    }
+    @keyframes blink{
+      to { opacity: .0; }
+    }
+    .description-container {
+      display: flex;
+    }
+    .description-animation {
+      color: black;
+      font-family: "Courier";
+      font-size: 20px;
+      padding: 0.1em;
+
+      text-align: center;
+    }
+    .cta {
+      position: absolute;
+      bottom: 20px;
+    }
+
+
+
+
+
+    .footer {
+      background-color: rgb(253, 78, 73);
+      min-height: 7vh;
+      width: 100%;
+    }
+
+    .podcast-episode-container {
+      /*background-color:#9700fa;*/
+      /*display: flex;*/
+      /*justify-content: center;*/
+      /*flex-direction: row;*/
+
+      background-color: #9700fa;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      position: sticky;
+      margin-top: 102px;
+      bottom: 0;
+      border-radius: 4px;
+
+      width: 100%;
+
+    }
+    .podcast-episode {
+      height: 102px;
+      width: 100%;
+      position: sticky;
+      margin-top: 2px;
+      bottom: 0;
+      max-width: 600px;
+    }
+    .top {
+      min-height: calc(100vh - 102px - 20px);
+      max-height: calc(100vh - 102px - 20px);
+      width: 100%;
+    }
+    .link {
+      font-family: "Courier";
+      text-underline: black;
+    }
+    .link:hover {
+      cursor: pointer;
+      text-decoration: underline;
+
+    }
+    .episode-container {
+      height: 10vh;
+      background-color: rgba(255,255,255, .4);
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body class="page">
+  <div class="top">
+    <div class="header"></div>
+    <div class="top-content">
+      <img class="logo-image" src="./EdTechAmericaLogoIcon.png"/>
+      <div class="logo-text">Ed Tech America</div>
+
+      <div class="description-container">
+        <p class="description" id="description"></p><p id="descriptionBlink" class="description blink">|</p>
+      </div>
+      <div class="cta">
+<!--        <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>-->
+<!--        <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>-->
+        <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Spotify</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="episode-container">
+    <div class="episode-container-current-episode">
+      <div class="ready-player-1 player">
+        <audio crossorigin>
+          <source src="./example-1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </div>
+<!--  <div class="podcast-episode-container">-->
+<!--    <iframe class="podcast-episode" src="https://anchor.fm/podcast-d76e708/embed/episodes/Ed-Tech-America-Ep&#45;&#45;1-&#45;&#45;Camilla-from-Lix-Technologies-e4vr9e" frameborder="0" scrolling="no"></iframe>-->
+<!--  </div>-->
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+		/**
+     * TODO:
+     * Change highlight color on text. i think one of the font creator apps that I bookmarked to Pretty Designs has a good example
+     *
+     * Display an alert if the iframes didn't load the podcast (i.e. because of an adblocker) - https://stackoverflow.com/a/46001569/2453293
+		 */
+		const words = ["Accelerate your learning.", "Accelerate your teaching.", "Accelerate America's Education."];
+    let i = 0;
+    let timer;
+
+    function typingEffect() {
+      let word = words[i].split("");
+      var loopTyping = function() {
+        if (word.length > 0) {
+          document.getElementById('description').innerHTML += word.shift();
+        } else {
+
+            startDeletingEffect();
+            return false;
+
+
+        };
+        timer = setTimeout(loopTyping, 50);
+      };
+      loopTyping();
+    };
+
+    function startDeletingEffect() {
+    	//turn off blinking
+      // document.
+      setTimeout(deletingEffect, 2000)
+
+    }
+
+    function deletingEffect() {
+      let word = words[i].split("");
+      var loopDeleting = function() {
+        if (word.length > 0) {
+          word.pop();
+          document.getElementById('description').innerHTML = word.join("");
+        } else {
+          if (words.length > (i + 1)) {
+            i++;
+          } else {
+            i = 0;
+          };
+          typingEffect();
+          return false;
+        };
+        timer = setTimeout(loopDeleting, 50);
+      };
+      loopDeleting();
+    };
+
+    typingEffect();
+  </script>
+
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>

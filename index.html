@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" type="text/css" href="./green-audio-player.css">
 <!--  <link rel="manifest" href="site.webmanifest">-->
 <!--  <link rel="apple-touch-icon" href="icon.png">-->
 <!--  &lt;!&ndash; Place favicon.ico in the root directory &ndash;&gt;-->
@@ -16,50 +17,105 @@
 
   <meta name="theme-color" content="#fafafa">
   <style>
-
+    /* Style the video: 100% width and height to cover the entire window */
     @import 'https://fonts.googleapis.com/css?family=Roboto';
     @font-face {
       font-family: Gilroy Light;
       src: url('./Gilroy-Light.otf');
     }
-    html, body {
-      width: 100%;
-      height: 100%;
-
-      font-family: Gilroy Light, Avenir Next, Calibri;
+    /*html, body {*/
+    /*  font-family: Gilroy Light, Avenir Next, Calibri;*/
+    /*  height: 100%;*/
+    /*}*/
+    .title {
+      position: absolute;
+      bottom: 10vw;
+      color: white;
     }
+    ::selection {
+      background: black;
+      filter: pixelate(100);
+      color: white;
+    }
+      @media only screen and (orientation: portrait) and (max-width: 555px) {
+        #myVideo {
+          height: 100%;
+          /* max-height: 100%; */
+          position: relative;
+          /* max-width: 100%; */
+          top: 0;
+          position: absolute;
+        }
+        .episode-container {
+          min-width: 100%;
+        }
 
-    .page {
+      }
+      @media (min-width: 556px) {
+        #myVideo {
+          position: fixed;
+          right: 0;
+          bottom: 0;
+          min-width: 100%;
+          min-height: 100%;
+        }
+        .episode-container {
+          max-width: 70vw;
+          width: 70vw;
+        }
+       }
+
+    .episode-container {
+      background-color: rgba(255,255,255, .7);
+      position: absolute;
+      bottom: 0;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
       display: flex;
-      flex-direction: column;
-      width: 100%;
-      min-height: 100%;
-      background-color: #EBEBEB;
+      justify-content: center;
       align-items: center;
       margin: 0;
     }
-    .header {
-      background: rgb(244, 246, 248);
-      min-height: 8vh;
-      width: 100%;
-    }
-
     .top-content {
-      /*margin-top: 20vh;*/
-      /*margin-bottom: 30vh;*/
-      /*display: flex;*/
-      /*flex-direction: column;*/
-      /*align-items: center;*/
+      background-color: rgba(255,255,255,.7);
+      color: black;
+      width: 620px;
+      text-align: center;
+      margin: 0;
+      padding-top: 15px;
 
+
+
+      position: absolute;
       display: flex;
       flex-direction: column;
       align-items: center;
-      /*min-height: 85vh;*/
-      min-height: calc(92vh - 102px - 20px);
-      max-height: calc(92vh - 102px - 20px);
-
       position: relative;
     }
+
+
+    /*.top-content {*/
+    /*  position: absolute;*/
+    /*  color: transparent;*/
+    /*  !*filter: invert(1) grayscale(1) contrast(9);*!*/
+    /*  !*margin-top: 20vh;*!*/
+    /*  !*margin-bottom: 30vh;*!*/
+    /*  !*display: flex;*!*/
+    /*  !*flex-direction: column;*!*/
+    /*  !*align-items: center;*!*/
+
+    /*  display: flex;*/
+    /*  flex-direction: column;*/
+    /*  align-items: center;*/
+    /*  !*min-height: 85vh;*!*/
+    /*  min-height: calc(92vh - 102px - 20px);*/
+    /*  max-height: calc(92vh - 102px - 20px);*/
+
+    /*  position: relative;*/
+    /*}*/
     @media (min-width: 768px) {
       .logo-image {
         width: 35vw;
@@ -71,14 +127,12 @@
       }
     }
     .logo-text {
-      /*text-align: center;*/
-      /*font-size: 40px;*/
-
-      font-family: Gilroy Light, Avenir Next, Calibri;
-      color: #2c2c2c;
       text-align: center;
       font-size: 10vh;
-      margin-top: 7vh
+
+    }
+    .top-content {
+      font-family: Gilroy Light, Avenir Next, Calibri;
 
     }
 
@@ -86,11 +140,29 @@
     /*html, body {*/
     /*  background-color: #000;*/
     /*}*/
+    .description-animation-container {
+      display: flex;
+      /*flex-direction:*/
+      flex-direction: row;
+      /*justify-content: */
+    }
     .description-animation {
       color: #fff;
-      font-family: Roboto;
+      /*font-family: Roboto;*/
       text-decoration: none;
+      /*color: black;*/
+
       color: black;
+      font-family: "Courier";
+      font-size: 20px;
+      padding: 0.1em;
+
+      text-align: center;
+
+
+
+      /* mix-blend-mode: difference; */
+
     }
 
     .blink {
@@ -101,14 +173,19 @@
     }
     .description-container {
       display: flex;
+         /* mix-blend-mode: difference; */
+      /* background-color: white; */
+      border-radius: 10px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      padding-left: 20px;
+      padding-right: 20px;
+      /* color: white; */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     .description-animation {
-      color: black;
-      font-family: "Courier";
-      font-size: 20px;
-      padding: 0.1em;
-
-      text-align: center;
     }
     .cta {
       position: absolute;
@@ -118,78 +195,67 @@
 
 
 
+    /*#myVideo {*/
+    /*  position: fixed;*/
+    /*  right: 0;*/
+    /*  bottom: 0;*/
+    /*  min-width: 100%;*/
+    /*  min-height: 100%;*/
+    /*}*/
 
-    .footer {
-      background-color: rgb(253, 78, 73);
-      min-height: 7vh;
-      width: 100%;
-    }
+    /*!* Add some content at the bottom of the video/page *!*/
+    /*.content {*/
+    /*  position: fixed;*/
+    /*  bottom: 0;*/
+    /*  background: rgba(0, 0, 0, 0.5);*/
+    /*  color: #f1f1f1;*/
+    /*  width: 100%;*/
+    /*  padding: 20px;*/
+    /*}*/
 
-    .podcast-episode-container {
-      /*background-color:#9700fa;*/
-      /*display: flex;*/
-      /*justify-content: center;*/
-      /*flex-direction: row;*/
+/*!* Style the button used to pause/play the video *!*/
+/*#myBtn {*/
+/*  width: 200px;*/
+/*  font-size: 18px;*/
+/*  padding: 10px;*/
+/*  border: none;*/
+/*  background: #000;*/
+/*  color: #fff;*/
+/*  cursor: pointer;*/
+/*}*/
 
-      background-color: #9700fa;
-      display: flex;
-      justify-content: center;
-      flex-direction: row;
-      position: sticky;
-      margin-top: 102px;
-      bottom: 0;
-      border-radius: 4px;
+/*#myBtn:hover {*/
+/*  background: #ddd;*/
+/*  color: black;*/
+/*}*/
 
-      width: 100%;
-
-    }
-    .podcast-episode {
-      height: 102px;
-      width: 100%;
-      position: sticky;
-      margin-top: 2px;
-      bottom: 0;
-      max-width: 600px;
-    }
-    .top {
-      min-height: calc(100vh - 102px - 20px);
-      max-height: calc(100vh - 102px - 20px);
-      width: 100%;
-    }
-    .link {
-      font-family: "Courier";
-      text-underline: black;
-    }
-    .link:hover {
-      cursor: pointer;
-      text-decoration: underline;
-
-    }
-    .episode-container {
-      height: 10vh;
-      background-color: rgba(255,255,255, .4);
-      position: absolute;
-      bottom: 0;
-    }
   </style>
 </head>
+<body>
+  <!-- The video -->
+  <video muted loop id="myVideo" data-change="cshatsh">
+<!--    <source id="desktopVid" type="video/mp4">-->
+<!--    <source id="mobileVid" type="video/mp4">-->
+  </video>
 
-<body class="page">
-  <div class="top">
-    <div class="header"></div>
-    <div class="top-content">
-      <img class="logo-image" src="./EdTechAmericaLogoIcon.png"/>
-      <div class="logo-text">Ed Tech America</div>
+  <div class="top-content">
+<!--    <img class="logo-image" src="./EdTechAmericaLogoIcon.png"/>-->
+    <div class="logo-text">Ed Tech America</div>
 
-      <div class="description-container">
-        <p class="description" id="description"></p><p id="descriptionBlink" class="description blink">|</p>
+    <div class="description-container">
+      <div class="description-animation-container">
+        <p class="description-animation" id="description"></p><p id="descriptionBlink" class="description-animation blink">|</p>
       </div>
-      <div class="cta">
-<!--        <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>-->
-<!--        <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>-->
-        <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Spotify</a></div>
-      </div>
+      <p class="description-details">Join John and Alex from Ed Tech Shop in interviewing education experts and ed tech CEOs to gain insight on how to solve the education crisis in America.</p>
     </div>
+<!--    <div class="cta">-->
+<!--      &lt;!&ndash;        <div class="cta-googleplay">Listen on <a class="link">Google Play</a></div>&ndash;&gt;-->
+<!--      &lt;!&ndash;        <div class="cta-apple">Listen on <a class="link">Apple Podcasts</a></div>&ndash;&gt;-->
+<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Spotify</a></div>-->
+<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Apple Podcasts</a></div>-->
+<!--      <div class="cta-spotify">Listen on <a class="link" href="https://open.spotify.com/show/5CnM68dGXL4j50Z1uiXOWj">Google Podcastsh</a></div>-->
+<!--    </div>-->
+
   </div>
   <div class="episode-container">
     <div class="episode-container-current-episode">
@@ -200,79 +266,116 @@
       </div>
     </div>
   </div>
-<!--  <div class="podcast-episode-container">-->
-<!--    <iframe class="podcast-episode" src="https://anchor.fm/podcast-d76e708/embed/episodes/Ed-Tech-America-Ep&#45;&#45;1-&#45;&#45;Camilla-from-Lix-Technologies-e4vr9e" frameborder="0" scrolling="no"></iframe>-->
-<!--  </div>-->
-  <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
+  <script>
+    // var player = document.getElementById('myVideo');
+    //
+    //   var mp4Vid = document.getElementById('mp4Source');
+    //
+    //   player.pause();
+    //
+    //   // Now simply set the 'src' property of the mp4Vid variable!!!!
+    //
+    //   mp4Vid.src = "/pathTo/newVideo.mp4";
+    //
+    //   player.load();
+    //   player.play();
+		let isVertical
+		const videoSource = document.querySelector('#myVideoSrc')
+		const video = document.querySelector('video')
+    setTimeout(() => {
+    	setVideoBasedOnScreenSize()
+		}, 0)
+    window.addEventListener('resize', setVideoBasedOnScreenSize)
+    function setVideoBasedOnScreenSize() {
+    	console.log("resize detected")
+			console.log('screen width & height are ', window.screen.width, window.screen.height)
+			const aspectRatio = window.screen.width / window.screen.height
+			if (aspectRatio < 1) {
+				if (isVertical === true) { return }
+				isVertical = true
+				console.log("vertical view detected")
+				// videoSource.src = './EdTechAmericaHeroLandingCropv7.mp4'
+        video.src = './EdTechAmericaHeroLandingCropv7.mp4'
+				// document.querySelector('#myVideoSrc').src = './EdTechAmericaLanding_v2.mp4'
+			} else {
+				console.log('horizontal detected', isVertical)
+				if (isVertical === false) { return }
+				isVertical = false
+				video.src = './EdTechAmericaLanding_v2.mp4'
+				// videoSource.src = './EdTechAmericaLanding_v2.mp4'
+			}
+			video.play()
+    }
+  </script>
 
-  <!-- Add your site or application content here -->
+  <script src="./green-audio-player.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+		document.addEventListener('DOMContentLoaded', function() {
+			GreenAudioPlayer.init({
+				selector: '.player',
+				stopOthersOnPlay: true
+			});
+		});
+  </script>
   <script>
 		/**
-     * TODO:
-     * Change highlight color on text. i think one of the font creator apps that I bookmarked to Pretty Designs has a good example
-     *
-     * Display an alert if the iframes didn't load the podcast (i.e. because of an adblocker) - https://stackoverflow.com/a/46001569/2453293
+		 * TODO:
+		 * Change highlight color on text. i think one of the font creator apps that I bookmarked to Pretty Designs has a good example
+		 *
+		 * Display an alert if the iframes didn't load the podcast (i.e. because of an adblocker) - https://stackoverflow.com/a/46001569/2453293
 		 */
 		const words = ["Accelerate your learning.", "Accelerate your teaching.", "Accelerate America's Education."];
-    let i = 0;
-    let timer;
+		let i = 0;
+		let timer;
 
-    function typingEffect() {
-      let word = words[i].split("");
-      var loopTyping = function() {
-        if (word.length > 0) {
-          document.getElementById('description').innerHTML += word.shift();
-        } else {
+		function typingEffect() {
+			let word = words[i].split("");
+			var loopTyping = function() {
+				if (word.length > 0) {
+					document.getElementById('description').innerHTML += word.shift();
+				} else {
 
-            startDeletingEffect();
-            return false;
+					startDeletingEffect();
+					return false;
 
 
-        };
-        timer = setTimeout(loopTyping, 50);
-      };
-      loopTyping();
-    };
+				};
+				timer = setTimeout(loopTyping, 50);
+			};
+			loopTyping();
+		};
 
-    function startDeletingEffect() {
-    	//turn off blinking
-      // document.
-      setTimeout(deletingEffect, 2000)
+		function startDeletingEffect() {
+			//turn off blinking
+			// document.
+			setTimeout(deletingEffect, 2000)
 
-    }
+		}
 
-    function deletingEffect() {
-      let word = words[i].split("");
-      var loopDeleting = function() {
-        if (word.length > 0) {
-          word.pop();
-          document.getElementById('description').innerHTML = word.join("");
-        } else {
-          if (words.length > (i + 1)) {
-            i++;
-          } else {
-            i = 0;
-          };
-          typingEffect();
-          return false;
-        };
-        timer = setTimeout(loopDeleting, 50);
-      };
-      loopDeleting();
-    };
+		function deletingEffect() {
+			let word = words[i].split("");
+			var loopDeleting = function() {
+				if (word.length > 0) {
+					word.pop();
+					document.getElementById('description').innerHTML = word.join("");
+				} else {
+					if (words.length > (i + 1)) {
+						i++;
+					} else {
+						i = 0;
+					};
+					typingEffect();
+					return false;
+				};
+				timer = setTimeout(loopDeleting, 50);
+			};
+			loopDeleting();
+		};
 
-    typingEffect();
+		typingEffect();
   </script>
-
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 
 </html>
+
