@@ -2,16 +2,5 @@
 ;(() => {
 
 
-	document.addEventListener("DOMContentLoaded", function() {
-		setTimeout(() => {
-			// console.log('body', document.querySelector('body'))
-			document.querySelector('iframe').contentDocument.querySelector('.wrapper').style.background = 'rgba(0, 0, 0, .5)'
-			document.querySelector('iframe').contentDocument.querySelector('ul').style.background = 'rgba(0, 0, 0)'
-			// const wrapper = document.querySelector('.wrapper');
-			// console.log('wrapper is',wrapper)
-			// alert(wrapper.style)
-			// wrapper.style['background'] = ''
-		},5000)
-	});
 
 })();

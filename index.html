@@ -149,7 +149,7 @@
       font-size: 10vh;
 
     }
-    .top-content {
+    *, .top-content {
       font-family: Gilroy Light, Avenir Next, Calibri;
 
     }
@@ -212,9 +212,47 @@
     a {
       color: blue;
     }
+    .circle {
+
+    }
 
 
 
+    .icon-play {
+      /*position: absolute;*/
+      width: 20px;
+      height: 10px;
+      border: solid 2px #fff;
+      border-radius: 20px;
+      /*top: 50px;*/
+      /*left: 50px;*/
+    }
+    .icon-play:before {
+      content: "";
+      width: 7px;
+      height: 11px;
+      border-left: 1px solid #fff;
+      border-radius: 1px;
+      /*position: absolute;*/
+      /*top: 23px;*/
+      /*left: 37px;*/
+    }
+    .icon-play:after {
+      content: "";
+      /*position: absolute;*/
+      top: 5.5px;
+      left: 4px;
+      width: 8px;
+      height: 8px;
+      -webkit-transform: rotate(45deg) skew(-5deg, -5deg);
+      transform: rotate(45deg) skew(-5deg, -5deg);
+      border-top: 1px solid #fff;
+      border-right: 1px solid #fff;
+      border-radius: 1px;
+    }
+    .icon-play:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
 
     /*#myVideo {*/
     /*  position: fixed;*/
@@ -250,6 +288,20 @@
 /*  color: black;*/
 /*}*/
 
+    .episode-list-container {
+      text-align: center;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+    }
+    .episode-list {
+      padding: 1em;
+      background-color: #f2f9fc;
+      max-width: 768px;
+      box-sizing: border-box;
+      margin: 0;
+      width: 768px;
+    }
   </style>
   <script src="./podlove.js"></script>
 </head>
@@ -284,6 +336,12 @@
   </div>
   <div class="below-the-fold">
     <div class="podcast-player" id="podcastPlayer"></div>
+    <div class="episode-list-container">
+      <div class="episode-list">
+        <div class="episode" onclick="goToEpisode(1)"><button>Ep 1</button> - Camilla Lastein with Lix Technologies</div>
+        <div class="episode" onclick="goToEpisode(2)"><button>Ep 2</button> - Learning How to Learn with Barbara Oakley</div>
+      </div>
+    </div>
   </div>
   <video class="video" muted loop id="myVideo" data-change="cshatsh">
 <!--    <source id="desktopVid" type="video/mp4">-->
@@ -355,114 +413,198 @@
 		});
   </script>
   <script>
-		const configuration = {
+
+		const episode1Configuration = {
 			theme: {
 				main: 'rgba(43, 138, 198, .5)',
         higlight: '#EC79F2',
       },
 
-			title: 'FS171 Invasion!',
-			subtitle: 'LAN Planung - Kalender - Bingo - Wikipedia - Akkukalibration - Alte iPads und iPods - Find My Friends - iPhone Music Player - Apple Watch - Kommandozeile - Star Wars - Dante - Internet of Things Security - VPN',
-			summary: 'Wir haben eine wie wir finden abwechslungsreiche Sendung produziert, die wir Euch wie immer mit Freude bereitstellen. Während die Live-Hörer Freak-Show-Bingo spielen, greifen wir das Wikipedia-Thema der letzten Sendung auf und liefern auch noch weitere Aspekte des optimalen Star-Wars-Medienkonsums frei Haus. Dazu viel Nerderei rund um die Kommandozeile, eine Einschätzung der Perspektive der Apple Watch, ein Rant über die mangelhafte Security  im Internet of Things (and Buildings) und allerlei anderer Kram.  Roddi setzt dieses Mal aus, sonst Vollbesetzung.',
-			publicationDate: '2016-02-11T03:13:55+00:00',
-			poster: 'https://freakshow.fm/wp-content/cache/podlove/04/662a9d4edcf77ea2abe3c74681f509/freak-show_200x200.jpg',
+			title: 'Camilla Lastein from Lix Technologies!',
+			subtitle: '',
+			summary: `
+			In this episode, John interviews Camilla Hesselund Lastein from Lix Technologies.
+
+				Camilla dropped out of college at age 20 when she discovered at the time that only 2% of textbooks were digitized. She went on to form Lix, which has since raised $7.5m and provided access to one million textbooks digitally.
+
+			Camilla shares her journey of founding Lix and her vision for the future of education.
+
+			Lix provides textbooks for university students as a digital subscription on a monthly basis. You can sign up at https://lix.com
+				`,
+			publicationDate: '2019-09-10T03:13:55+00:00',
+			poster: 'https://assets-global.website-files.com/5ca07c5b0620581642fa94bc/5ca1d6e1b7e3edb122227c83_Lix%20symbol%20only%20white.svg',
 			show: {
-				title: 'Freak Show',
-				subtitle: 'Menschen! Technik! Sensationen!',
-				summary: 'Die muntere Talk Show um Leben mit Technik, das Netz und Technikkultur. Bisweilen Apple-lastig aber selten einseitig. Wir leben und lieben Technologie und reden darüber. Mit Tim, hukl, roddi, Clemens und Denis. Freak Show hieß irgendwann mal mobileMacs.',
+				title: 'EdTech America',
+				subtitle: 'Accelerate America\'s Education',
+				summary: 'Join John and Alex from Ed Tech Shop in interviewing education experts and ed tech CEOs to gain insight on how to solve the education crisis in America.',
 				poster: 'https://freakshow.fm/wp-content/cache/podlove/04/662a9d4edcf77ea2abe3c74681f509/freak-show_200x200.jpg',
 				url: 'https://freakshow.fm'
 			},
-			duration: '04:15:32',
+			duration: '32:06',
 			chapters: [
-				{ start:"00:00:00", title: 'Intro'},
-				{ start:"00:01:39", title: 'Begrüßung'},
-				{ start:"00:04:58", title: 'IETF Meeting Netzwerk'},
-				{ start:"00:18:37", title: 'Kalender'},
-				{ start:"00:33:40", title: 'Freak Show Bingo'},
-				{ start:"00:35:37", title: 'Wikipedia'},
-				{ start:"01:17:26", title: 'iPhone Akkukalibration'},
-				{ start:"01:24:55", title: 'Alte iPads und iPod touches'},
-				{ start:"01:31:02", title: 'Find My Friends'},
-				{ start:"01:41:46", title: 'iPhone Music Player'},
-				{ start:"01:56:13", title: 'Apple Watch'},
-				{ start:"02:11:51", title: 'Kommandozeile: System Appreciation'},
-				{ start:"02:23:10", title: 'Sound und Design für Games'},
-				{ start:"02:24:59", title: 'Kommandozeile: Remote Deployment'},
-				{ start:"02:32:37", title: 'Kommandozeile: Man Pages'},
-				{ start:"02:44:31", title: 'Kommandozeile: screen vs. tmux'},
-				{ start:"02:58:02", title: 'Star Wars: Machete Order & Phantom Edit'},
-				{ start:"03:20:05", title: 'Kopfhörer-Ersatzteile'},
-				{ start:"03:23:39", title: 'Dante'},
-				{ start:"03:38:03", title: 'Dante Via'},
-				{ start:"03:45:33", title: 'Internet of Things Security'},
-				{ start:"03:56:11", title: 'That One Privacy Guy\'s VPN Comparison Chart'},
-				{ start:"04:10:00", title: 'Ausklang'}
+				{ start:"00:00:00", title: 'Episode'},
+				// { start:"00:01:39", title: 'Begrüßung'},
+				// { start:"00:04:58", title: 'IETF Meeting Netzwerk'},
+				// { start:"00:18:37", title: 'Kalender'},
+				// { start:"00:33:40", title: 'Freak Show Bingo'},
+				// { start:"00:35:37", title: 'Wikipedia'},
+				// { start:"01:17:26", title: 'iPhone Akkukalibration'},
+				// { start:"01:24:55", title: 'Alte iPads und iPod touches'},
+				// { start:"01:31:02", title: 'Find My Friends'},
+				// { start:"01:41:46", title: 'iPhone Music Player'},
+				// { start:"01:56:13", title: 'Apple Watch'},
+				// { start:"02:11:51", title: 'Kommandozeile: System Appreciation'},
+				// { start:"02:23:10", title: 'Sound und Design für Games'},
+				// { start:"02:24:59", title: 'Kommandozeile: Remote Deployment'},
+				// { start:"02:32:37", title: 'Kommandozeile: Man Pages'},
+				// { start:"02:44:31", title: 'Kommandozeile: screen vs. tmux'},
+				// { start:"02:58:02", title: 'Star Wars: Machete Order & Phantom Edit'},
+				// { start:"03:20:05", title: 'Kopfhörer-Ersatzteile'},
+				// { start:"03:23:39", title: 'Dante'},
+				// { start:"03:38:03", title: 'Dante Via'},
+				// { start:"03:45:33", title: 'Internet of Things Security'},
+				// { start:"03:56:11", title: 'That One Privacy Guy\'s VPN Comparison Chart'},
+				// { start:"04:10:00", title: 'Ausklang'}
 			],
 			audio: [{
-				url: 'http://freakshow.fm/podlove/file/4468/s/download/c/select-show/fs171-invasion.m4a',
+				url: '/episodes/Ed-Tech-America-Ep--1---Camill-5d94cc1e922c2.m4a',
 				mimeType: 'audio/mp4',
-				size: 93260000,
+				size: 31260000,
 				title: 'Audio MP4'
-			}, {
-				url: 'http://freakshow.fm/podlove/file/4467/s/download/c/select-show/fs171-invasion.mp3',
-				mimeType: 'audio/mpeg',
-				size: 14665000,
-				title: 'Audio MP3'
-			}, {
-				url: 'http://freakshow.fm/podlove/file/4467/s/download/c/select-show/fs171-invasion.oga',
-				mimeType: 'audio/ogg',
-				size: 94400000,
-				title: 'Audio Ogg'
-			}, {
-				url: 'http://freakshow.fm/podlove/file/4467/s/download/c/select-show/fs171-invasion.opus',
-				mimeType: 'audio/opus',
-				size: 94400000,
-				title: 'Audio Opus'
-			}],
+			},],
 			reference: {
 				config: '//podlove-player.surge.sh/fixtures/example.json',
 				share: '//podlove-player.surge.sh/share'
 			},
 			contributors: [{
-				name: 'Tim Pritlove',
-				avatar: 'https:\/\/freakshow.fm\/wp-content\/cache\/podlove\/47\/08928e3c26dcb1141d67ad75869619\/tim-pritlove_150x150.jpg',
+				name: 'Camilla Lastein',
+				avatar: 'data:image/jpeg;base64,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',
 				role: { id: '9', slug: 'team', title: 'Team' },
 				group: { id: '1', slug: 'onair', title: 'On Air' },
 				comment: null
-			}, {
-				name: 'Clemens Schrimpe',
-				avatar: 'https:\/\/freakshow.fm\/wp-content\/cache\/podlove\/0f\/9c18f5e825496b9060337f92814142\/clemens-schrimpe_150x150.jpg',
+			},
+      {
+				name: 'John Simerlink',
+				avatar: 'https://media.licdn.com/dms/image/C4E03AQHC3hw6ImtznA/profile-displayphoto-shrink_200_200/0?e=1573689600&v=beta&t=XpIsA8SPfOTwGx3gSFAE_VMVwAGvmpNdwIzULuPt1BQ',
 				role: { id: '9', slug: 'team', title: 'Team' },
 				group: { id: '1', slug: 'onair', title: 'On Air' },
 				comment: null
-			}, {
-				name: 'hukl',
-				avatar: 'https:\/\/freakshow.fm\/wp-content\/cache\/podlove\/8e\/f30cbe274c3f5e43dc4a7219676f50\/hukl_150x150.jpg',
-				role: { id: '9', slug: 'team', title: 'Team' },
-				group: { id: '1', slug: 'onair', title: 'On Air' },
-				comment: null
-			}, {
-				name: 'Denis Ahrens',
-				avatar: 'https:\/\/freakshow.fm\/wp-content\/cache\/podlove\/b2\/425e5c8f180ddf548c95be1c2d7bcf\/denis-ahrens_150x150.jpg',
-				role: { id: '9', slug: 'team', title: 'Team' },
-				group: { id: '1', slug: 'onair', title: 'On Air' },
-				comment: null
-			}, {
-				name: 'David Scribane',
-				avatar: 'https:\/\/freakshow.fm\/wp-content\/cache\/podlove\/b3\/c8cc8a1989aa0fc4488d473517b1ee\/david-scribane_150x150.jpg',
-				role: { id: '7', slug: 'composition', title: 'Komposition' },
-				group: { id: '3', slug: 'support', title: 'Support' },
-				comment: null
-			}, {
-				name: 'Xenim Streaming Network',
-				avatar: 'https:\/\/freakshow.fm\/podlove\/image\/687474703a2f2f6d6574612e6d6574616562656e652e6d652f6d656469612f6d6574616562656e652f636f6e7472696275746f72732f78656e696d2d73747265616d696e672d6e6574776f726b2e706e67\/150\/150\/0\/xenim-streaming-network',
-				role: { id: '10', slug: 'streaming', title: 'Streaming' },
-				group: { id: '3', slug: 'support', title: 'Support' },
-				comment: null
-			}]
+			},
+			]
 		};
-		podlovePlayer('#podcastPlayer', configuration  )
+
+		const episode2Configuration = {
+			theme: {
+				main: 'rgba(178, 48, 43, .5)',
+				higlight: '#EC79F2',
+			},
+
+			title: 'Learning How to Learn with Barbara Oakley',
+			subtitle: '',
+			summary: `
+				`,
+			publicationDate: '2019-09-17T03:13:55+00:00',
+			poster: 'https://assets-global.website-files.com/5ca07c5b0620581642fa94bc/5ca1d6e1b7e3edb122227c83_Lix%20symbol%20only%20white.svg',
+			show: {
+				title: 'EdTech America',
+				subtitle: 'Menschen! Technik! Sensationen!',
+				summary: 'Join John and Alex from Ed Tech Shop in interviewing education experts and ed tech CEOs to gain insight on how to solve the education crisis in America.',
+				poster: 'https://freakshow.fm/wp-content/cache/podlove/04/662a9d4edcf77ea2abe3c74681f509/freak-show_200x200.jpg',
+				url: 'https://freakshow.fm'
+			},
+			duration: '32:06',
+			chapters: [
+				{ start:"00:00:00", title: 'Episode'},
+				// { start:"00:01:39", title: 'Begrüßung'},
+				// { start:"00:04:58", title: 'IETF Meeting Netzwerk'},
+				// { start:"00:18:37", title: 'Kalender'},
+				// { start:"00:33:40", title: 'Freak Show Bingo'},
+				// { start:"00:35:37", title: 'Wikipedia'},
+				// { start:"01:17:26", title: 'iPhone Akkukalibration'},
+				// { start:"01:24:55", title: 'Alte iPads und iPod touches'},
+				// { start:"01:31:02", title: 'Find My Friends'},
+				// { start:"01:41:46", title: 'iPhone Music Player'},
+				// { start:"01:56:13", title: 'Apple Watch'},
+				// { start:"02:11:51", title: 'Kommandozeile: System Appreciation'},
+				// { start:"02:23:10", title: 'Sound und Design für Games'},
+				// { start:"02:24:59", title: 'Kommandozeile: Remote Deployment'},
+				// { start:"02:32:37", title: 'Kommandozeile: Man Pages'},
+				// { start:"02:44:31", title: 'Kommandozeile: screen vs. tmux'},
+				// { start:"02:58:02", title: 'Star Wars: Machete Order & Phantom Edit'},
+				// { start:"03:20:05", title: 'Kopfhörer-Ersatzteile'},
+				// { start:"03:23:39", title: 'Dante'},
+				// { start:"03:38:03", title: 'Dante Via'},
+				// { start:"03:45:33", title: 'Internet of Things Security'},
+				// { start:"03:56:11", title: 'That One Privacy Guy\'s VPN Comparison Chart'},
+				// { start:"04:10:00", title: 'Ausklang'}
+			],
+			audio: [{
+				url: '/episodes/Ed-Tech-America-Ep--1---Camill-5d94cc1e922c2.m4a',
+				mimeType: 'audio/mp4',
+				size: 31260000,
+				title: 'Audio MP4'
+			},],
+			reference: {
+				config: '//podlove-player.surge.sh/fixtures/example.json',
+				share: '//podlove-player.surge.sh/share'
+			},
+			contributors: [{
+				name: 'Barbara Oakley',
+				avatar: `
+data:image/jpeg;base64,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
+        `,
+				role: { id: '9', slug: 'team', title: 'Team' },
+				group: { id: '1', slug: 'onair', title: 'On Air' },
+				comment: null
+			},
+				{
+					name: 'John Simerlink',
+					avatar: 'https://media.licdn.com/dms/image/C4E03AQHC3hw6ImtznA/profile-displayphoto-shrink_200_200/0?e=1573689600&v=beta&t=XpIsA8SPfOTwGx3gSFAE_VMVwAGvmpNdwIzULuPt1BQ',
+					role: { id: '9', slug: 'team', title: 'Team' },
+					group: { id: '1', slug: 'onair', title: 'On Air' },
+					comment: null
+				},
+			]
+		};
+
+		podlovePlayer('#podcastPlayer', episode1Configuration  )
+    function goToEpisode(number) {
+			switch(number) {
+        case 1:
+					podlovePlayer('#podcastPlayer', episode1Configuration  )
+          break
+        case 2:
+					podlovePlayer('#podcastPlayer', episode2Configuration  )
+					break
+
+
+      }
+			adjustPodloveStyle()
+    }
+
+
+    function adjustPodloveStyle() {
+			setTimeout(() => {
+				// console.log('body', document.querySelector('body'))
+				document.querySelector('iframe').contentDocument.querySelector('.wrapper').style.background = 'rgba(0, 0, 0, .5)'
+				document.querySelector('iframe').contentDocument.querySelector('ul').style.background = 'rgba(0, 0, 0)'
+				const imageContainerStyle = document.querySelector('iframe').contentDocument.querySelector('.image-container').style;
+				imageContainerStyle['display'] = 'flex'
+				imageContainerStyle['justify-content'] = 'center'
+				imageContainerStyle['align-items'] = 'center'
+				// document.querySelector('image-container').contentDocument.querySelector('ul').style.background = 'rgba(0, 0, 0)'
+				// const wrapper = document.querySelector('.wrapper');
+				// console.log('wrapper is',wrapper)
+				// alert(wrapper.style)
+				// wrapper.style['background'] = ''
+			},5000)
+    }
+		document.addEventListener("DOMContentLoaded", function() {
+			adjustPodloveStyle()
+		});
+
+
+
   </script>
   <script>
 		/**
